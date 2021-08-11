@@ -2,7 +2,7 @@ const express = require('express');
 const { verifyLogin } = require('./middleware/loginFIlter');
 const { login, createUser } = require('./controllers/user');
 const {
-  createEnterprise, readEnterprises, updateEnterprise, deleteEnterprise
+  createEnterprise, readEnterprises, updateEnterprise, deleteEnterprise,
 } = require('./controllers/enterprise');
 
 const route = express();
