@@ -3,6 +3,6 @@ CREATE DATABASE enterprise_catalog;
 CREATE TABLE client(
   id SERIAL NOT NULL PRIMARY KEY,
   name TEXT NOT NULL,
-  login VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
   password TEXT NOT NULL
 );

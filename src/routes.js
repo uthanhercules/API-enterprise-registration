@@ -1,13 +1,13 @@
 const express = require('express');
 const { verifyLogin } = require('./middleware/loginFIlter');
-const { login, createUser } = require('./controllers/user');
+const { userLogin, createUser } = require('./controllers/user');
 const {
   createEnterprise, readEnterprises, updateEnterprise, deleteEnterprise,
 } = require('./controllers/enterprise');
 
 const route = express();
 
-route.post('/login', login);
+route.post('/login', userLogin);
 route.post('/register', createUser);
 
 route.use(verifyLogin);
