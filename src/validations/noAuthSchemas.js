@@ -11,4 +11,8 @@ const loginSchema = yup.object().shape({
   password: yup.string().required(),
 });
 
-module.exports = { registerSchema, loginSchema };
+const loginVerifySchema = yup.object().shape({
+  userToken: yup.string().required(),
+});
+
+module.exports = { registerSchema, loginSchema, loginVerifySchema };

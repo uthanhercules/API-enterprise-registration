@@ -13,7 +13,7 @@ const userLogin = async (req, res) => {
     const users = await knex('client').select('email');
 
     if (users.length === 0) {
-      return res.status(400).json(errors.userDontExist);
+      return res.status(404).json(errors.userDontExist);
     }
 
     const user = await knex.select('*').from('client').where({ email });
@@ -38,7 +38,7 @@ const userLogin = async (req, res) => {
       userToken,
     };
 
-    return res.status(200).json(authUser);
+    return res.status(202).json(authUser);
   } catch (error) {
     return res.status(400).json(error.message);
   }
@@ -59,7 +59,7 @@ const createUser = async (req, res) => {
     password = encrypt(password);
     // eslint-disable-next-line no-unused-vars
     const newUser = await knex('client').insert({ name, email, password });
-    return res.status(200).json('Usuário registrado com sucesso!');
+    return res.status(201).json('Usuário registrado com sucesso!');
   } catch (error) {
     return res.status(400).json(error.message);
   }
