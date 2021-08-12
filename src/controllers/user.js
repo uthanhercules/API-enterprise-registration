@@ -10,7 +10,7 @@ const userLogin = async (req, res) => {
 
   try {
     await loginSchema.validate(req.body);
-    const users = await knex('client').select('email');
+    const users = await knex('client').select('*').where({ email });
 
     if (users.length === 0) {
       return res.status(404).json(errors.userDontExist);

@@ -3,10 +3,12 @@ const fetch = require('node-fetch');
 const jwt = require('jsonwebtoken');
 const knex = require('../database/connection');
 const { errors } = require('../errors/enterprise');
+const { registerSchema } = require('../validations/authSchemas');
 
 const createEnterprise = async (req, res) => {
   const { cnpj } = req.body;
   try {
+    await registerSchema.validate(req.body);
     // eslint-disable-next-line camelcase
     const { ID: client_id } = jwt.verify(req.header('userToken'), jwtSecret);
     const enterprise = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`);
@@ -80,7 +82,7 @@ const readEnterprises = async (req, res) => {
     const enterprises = await knex('enterprise').where({ client_id });
 
     if (enterprises.length === 0) {
-      return res.status(200).json('Não há empresas registradas.');
+      return res.status(200).json('Você não tem empresas registradas.');
     }
 
     return res.status(200).json(enterprises);
