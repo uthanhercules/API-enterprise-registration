@@ -60,7 +60,7 @@ input
 ```json
 {
 	"email": "uthan@email.com",
-	"password": "123456"
+	"password": "1234567890"
 }
 ```
 
@@ -68,7 +68,7 @@ output:
 ```json
 {
   "user": {
-    "ID": X,
+    "ID": 2,
     "Name": "Uthan",
     "Email": "uthan@email.com"
   },
@@ -277,7 +277,7 @@ input
 
 output:
 ```json
-"Registro de ID X editado com sucesso!"
+"Registro de ID [X] editado com sucesso!"
 ```
 
 output if invalid:
