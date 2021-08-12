@@ -18,7 +18,15 @@ const readEnterprises = async (req, res) => {
 
 const updateEnterprise = async (req, res) => {
   const { id } = req.params;
+  const { ID } = jwt.verify(req.header('userToken'), jwtSecret);
+
   try {
+    const enterprises = await knex('enterprise').where({ client_id: ID, id });
+
+    if (enterprises.length === 0) {
+      return res.status(404).json(errors.noRegister);
+    }
+
     const enterprise = await knex('enterprise').select('*').where({ id });
 
     if (enterprise.length === 0) {
@@ -40,8 +48,15 @@ const updateEnterprise = async (req, res) => {
 
 const deleteEnterprise = async (req, res) => {
   const { id } = req.params;
+  const { ID } = jwt.verify(req.header('userToken'), jwtSecret);
 
   try {
+    const enterprises = await knex('enterprise').where({ client_id: ID, id });
+
+    if (enterprises.length === 0) {
+      return res.status(404).json(errors.noRegister);
+    }
+
     const enterprise = await knex('enterprise').select('*').where({ id });
 
     if (enterprise.length === 0) {
