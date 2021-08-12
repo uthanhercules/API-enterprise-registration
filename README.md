@@ -37,9 +37,9 @@ Here you can register a new user with all data going on a JSON body.
 input
 ```json
 {
-	"name": "Uthan",
-	"email": "uthan@email.com",
-	"password": "1234567890"
+  "name": "Uthan",
+  "email": "uthan@email.com",
+  "password": "1234567890"
 }
 ```
 
@@ -59,8 +59,8 @@ Here you can login a user with all data going on a JSON body.
 input
 ```json
 {
-	"email": "uthan@email.com",
-	"password": "1234567890"
+  "email": "uthan@email.com",
+  "password": "1234567890"
 }
 ```
 
@@ -251,7 +251,7 @@ Register a new enterprise for the logged user.
 input
 ```json
 {
-	"cnpj": 45997418000153
+  "cnpj": 45997418000153
 }
 ```
 
@@ -271,7 +271,7 @@ Edit a enterprise of the logged user. The body only carries the data that will b
 input
 ```json
 {
-	"any_data_to_update": 1234567890
+  "any_data_to_update": 1234567890
 }
 ```
 
