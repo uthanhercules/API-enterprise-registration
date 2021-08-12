@@ -23,6 +23,7 @@ CREATE TABLE enterprise (
   social_capital INT NOT NULL,
   cep NUMERIC(8) NOT NULL,
   address TEXT NOT NULL,
-  phone INT NOT NULL,
+  phone JSON NOT NULL,
+  fax TEXT,
   partners JSON
 );

@@ -22,6 +22,11 @@ const verifyLogin = async (req, res, next) => {
     if (error.message === 'invalid token') {
       return res.status(401).json(errors.needLogin);
     }
+
+    if (error.message === 'jwt expired') {
+      return res.status(400).json(errors.needLogin);
+    }
+
     return res.status(400).json(error.message);
   }
 };

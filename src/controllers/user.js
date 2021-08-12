@@ -50,10 +50,10 @@ const createUser = async (req, res) => {
 
   try {
     await registerSchema.validate(req.body);
-    const users = await knex('client').select('email');
+    const users = await knex('client').select('email').where({ email });
 
     if (users.length > 0) {
-      return res.status(400).json(errors.loginAlreadyExists);
+      return res.status(400).json(errors.emailAlreadyExists);
     }
 
     password = encrypt(password);
