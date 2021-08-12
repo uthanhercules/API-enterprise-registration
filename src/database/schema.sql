@@ -9,6 +9,7 @@ CREATE TABLE client(
 
 CREATE TABLE enterprise (
   id SERIAL NOT NULL PRIMARY KEY,
+  client_id INT NOT NULL REFERENCES client(id),
   cnpj NUMERIC(14) NOT NULL,
   hq BOOLEAN NOT NULL,
   active BOOLEAN NOT NULL,
